@@ -1,0 +1,9 @@
+// @import "tailwindcss";
+
+/* --- Add external styles as a component layer --- */
+@layer components {
+  /* FIXME: This is caused warning */
+  @import "@webfac/gslider/GSlider.scss";
+  @import "@webfac/gslider/paginations/Pagination.scss";
+  @import "@webfac/react-common/Styles.scss";
+}

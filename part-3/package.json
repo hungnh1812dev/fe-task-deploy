@@ -1,0 +1,45 @@
+{
+  "name": "part-3",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.6",
+    "@webfac/gslider": "npm:@sai_deployment/gslider@^2.1.16",
+    "@webfac/react-common": "npm:@sai_deployment/react-common@3.4.0",
+    "@webfac/react-hooks": "npm:@sai_deployment/react-hooks@2.2.6",
+    "classnames": "^2.5.1",
+    "gsap": "^3.13.0",
+    "html-react-parser": "^5.2.3",
+    "isomorphic-dompurify": "^2.24.0",
+    "lodash": "^4.17.21",
+    "motion": "^12.10.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwindcss": "^4.1.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.25.0",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react-swc": "^3.9.0",
+    "eslint": "^9.25.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^16.0.0",
+    "postcss": "^8.4.39",
+    "prettier": "^3.3.2",
+    "prettier-plugin-css-order": "^2.1.2",
+    "prettier-plugin-tailwindcss": "^0.6.11",
+    "sass": "^1.88.0",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.30.1",
+    "vite": "^6.3.5"
+  }
+}
