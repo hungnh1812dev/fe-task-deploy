@@ -19,34 +19,62 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
     open: boolean;
     image?: string;
   } | null>(null);
+  const [selectedSlide, setSelectedSlide] = useState<number>(0);
+  const [sliderActive, setSliderActive] = useState<boolean>(false);
 
-  useEffect(() => {}, [slider]);
+  useEffect(() => {
+    const handleSlideChange = (instance: GSliderType) => {
+      setSelectedSlide(instance.selectedSlide);
+    };
+    const handleActiveChange = (instance: GSliderType) => {
+      setSliderActive(instance.enable);
+    };
+
+    slider?.on("slideChange", handleSlideChange);
+    slider?.on("activeChange", handleActiveChange);
+
+    return () => {
+      slider?.off("slideChange", handleSlideChange);
+      slider?.off("activeChange", handleActiveChange);
+    };
+  }, [slider]);
 
   return (
     <>
-      <GSlider
-        sliderRef={setSlider}
-        classes={{ slide: "w-full md:w-1/2 lg:w-1/3 flex" }}
-        options={{
-          loop: false,
-          alwaysFill: true,
-          align: "start",
-        }}
-      >
-        {data.map((item, index) => (
-          <div key={`item-${index}`} className="flex p-4">
-            <div className="flex flex-col items-center bg-gray-600 text-white">
-              <div className="relative w-full cursor-pointer overflow-hidden pb-[65.25%]" onClick={() => setPopup({ open: true, image: item.image })}>
-                <img className="absolute top-0 left-0 block h-full w-full" src={item.image} alt="product image" />
-              </div>
-              <div className="p-4">
-                <div className="text-title mb-4 text-center font-bold uppercase">{item.title}</div>
-                <HtmlRender className="text-description text-center" content={item.description} />
+      <div className="flex flex-col items-center">
+        <GSlider sliderRef={setSlider} classes={{ root: "w-full", slide: "w-full md:w-1/2 lg:w-1/3 flex" }}>
+          {data.map((item, index) => (
+            <div key={`item-${index}`} className="flex p-4">
+              <div className={`flex flex-col items-center bg-gray-600 text-white`}>
+                <div className="relative w-full cursor-pointer overflow-hidden pb-[65.25%]" onClick={() => setPopup({ open: true, image: item.image })}>
+                  <img className="absolute top-0 left-0 block h-full w-full" src={item.image} alt="product image" />
+                </div>
+                <div className="p-4">
+                  <div className="text-title mb-4 text-center font-bold uppercase">{item.title}</div>
+                  <HtmlRender className="text-description text-center" content={item.description} />
+                </div>
               </div>
             </div>
+          ))}
+        </GSlider>
+        {sliderActive && (
+          <div className="grap-12 relative flex gap-4">
+            <div
+              onClick={() => slider?.slidePrev()}
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-600 text-base leading-1 font-bold text-white uppercase"
+            >
+              <div className="relative -top-[0.1em]">{"<"}</div>
+            </div>
+            <div className="text-base font-bold uppercase">{data[selectedSlide].title}</div>
+            <div
+              onClick={() => slider?.slideNext()}
+              className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-600 text-base leading-1 font-bold text-white uppercase"
+            >
+              <div className="relative -top-[0.1em]">{">"}</div>
+            </div>
           </div>
-        ))}
-      </GSlider>
+        )}
+      </div>
       <Modal
         isOpen={popupState?.open || false}
         onBackClick={() => setPopup(null)}
