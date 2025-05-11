@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,  viewport-fit=cover"
+    />
+    <title>HTML Task</title>
+    <link rel="stylesheet" href="./style.css" />
+    <script async src="./main.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="carousel">
+        <div class="carousel__item item">
+          <div class="item__image">
+            <img src="./assets/image-1.jpeg" alt="product image" />
+          </div>
+          <div class="item__details">
+            <div class="item__title">Product 1</div>
+            <div class="item__description">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure,
+              eum? Esse asperiores aut praesentium quaerat unde iste amet, sit
+              accusantium illum facere quia non optio distinctio, et
+              reprehenderit eum vel!
+            </div>
+          </div>
+        </div>
+        <div class="carousel__item item">
+          <div class="item__image">
+            <img src="./assets/image-2.jpg" alt="product image" />
+          </div>
+          <div class="item__details">
+            <div class="item__title">Product 2</div>
+            <div class="item__description">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure,
+              eum? Esse asperiores aut praesentium quaerat unde iste amet, sit
+              accusantium illum facere quia non optio distinctio
+            </div>
+          </div>
+        </div>
+        <div class="carousel__item item">
+          <div class="item__image">
+            <img src="./assets/image-3.jpeg" alt="product image" />
+          </div>
+          <div class="item__details">
+            <div class="item__title">Product 3</div>
+            <div class="item__description">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iure,
+              eum?
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- The Modal -->
+    <div
+      id="zoom-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="Product Image Zoom"
+      tabindex="-1"
+    >
+      <div id="modal-btn-close" class="modal__btn-close">X</div>
+      <div class="modal__content">
+        <img class="modal__image" id="image" alt="product image" />
+      </div>
+    </div>
+  </body>
+</html>
